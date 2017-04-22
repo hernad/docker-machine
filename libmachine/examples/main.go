@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/docker/machine/drivers/virtualbox"
+	"github.com/hernad/docker-machine/drivers/virtualbox"
 	"github.com/docker/machine/libmachine"
 	"github.com/docker/machine/libmachine/log"
 )

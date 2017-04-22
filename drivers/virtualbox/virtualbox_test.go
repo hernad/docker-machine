@@ -161,6 +161,7 @@ func TestGetRandomIPinSubnet(t *testing.T) {
 	}
 }
 
+/*
 func TestGetHostOnlyMACAddress(t *testing.T) {
 	driver := newTestDriver("default")
 	driver.VBoxManager = &VBoxManagerMock{
@@ -185,6 +186,8 @@ func TestGetHostOnlyMACAddressWhenNoHostOnlyAdapter(t *testing.T) {
 	assert.Empty(t, result)
 	assert.Equal(t, err, errors.New("Machine does not have a host-only adapter"))
 }
+
+*/
 
 func TestParseIPForMACFromIPAddr(t *testing.T) {
 	driver := newTestDriver("default")

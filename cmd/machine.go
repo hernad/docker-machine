@@ -21,7 +21,7 @@ import (
 	"github.com/docker/machine/drivers/openstack"
 	"github.com/docker/machine/drivers/rackspace"
 	"github.com/docker/machine/drivers/softlayer"
-	"github.com/docker/machine/drivers/virtualbox"
+	"github.com/hernad/docker-machine/drivers/virtualbox"
 	"github.com/docker/machine/drivers/vmwarefusion"
 	"github.com/docker/machine/drivers/vmwarevcloudair"
 	"github.com/docker/machine/drivers/vmwarevsphere"

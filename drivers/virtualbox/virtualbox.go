@@ -282,10 +282,12 @@ func (d *Driver) PreCreateCheck() error {
 		return err
 	}
 
+  /*
 	// Check that Host-only interfaces are ok
-	if _, err = listHostOnlyAdapters(d.VBoxManager); err != nil {
+	greenbox if _, err = listHostOnlyAdapters(d.VBoxManager); err != nil {
 		return err
 	}
+	*/
 
 	return nil
 }
@@ -514,7 +516,8 @@ func (d *Driver) Start() error {
 		return err
 	}
 
-	var hostOnlyAdapter *hostOnlyNetwork
+  /* greenbox
+	greenbox var hostOnlyAdapter *hostOnlyNetwork
 	if s == state.Stopped {
 		log.Infof("Check network to re-create if needed...")
 
@@ -522,9 +525,11 @@ func (d *Driver) Start() error {
 			return fmt.Errorf("Error setting up host only network on machine start: %s", err)
 		}
 	}
+	*/
 
 	switch s {
 	case state.Stopped, state.Saved:
+		d.SSHPort = 2222 // default greenbox host ssh port
 		d.SSHPort, err = setPortForwarding(d, 1, "ssh", "tcp", 22, d.SSHPort)
 		if err != nil {
 			return err
@@ -562,7 +567,9 @@ func (d *Driver) Start() error {
 		return err
 	}
 
-	if hostOnlyAdapter == nil {
+/* greenbox hostOnlyAdapter out
+
+	greenbox if hostOnlyAdapter == nil {
 		return nil
 	}
 
@@ -605,6 +612,8 @@ func (d *Driver) Start() error {
 
 	// We have to be sure the adapter is updated before starting the VM
 	d.sleeper.Sleep(5 * time.Second)
+
+*/
 
 	if err := d.vbm("startvm", d.MachineName, "--type", d.UIType); err != nil {
 		return fmt.Errorf("Unable to start the VM: %s", err)
@@ -710,6 +719,7 @@ func (d *Driver) GetState() (state.State, error) {
 	return state.None, nil
 }
 
+/*
 func (d *Driver) getHostOnlyMACAddress() (string, error) {
 	// Return the MAC address of the host-only adapter
 	// assigned to this machine. The returned address
@@ -740,6 +750,8 @@ func (d *Driver) getHostOnlyMACAddress() (string, error) {
 
 	return strings.ToLower(groups[1]), nil
 }
+
+*/
 
 func (d *Driver) parseIPForMACFromIPAddr(ipAddrOutput string, macAddress string) (string, error) {
 	// Given the output of "ip addr show" on the VM, return the IPv4 address
@@ -782,12 +794,14 @@ func (d *Driver) GetIP() (string, error) {
 		return "", drivers.ErrHostIsNotRunning
 	}
 
+  /*
 	macAddress, err := d.getHostOnlyMACAddress()
 	if err != nil {
 		return "", err
 	}
 
 	log.Debugf("Host-only MAC: %s\n", macAddress)
+
 
 	output, err := drivers.RunSSHCommandFromDriver(d, "ip addr show")
 	if err != nil {
@@ -802,6 +816,9 @@ func (d *Driver) GetIP() (string, error) {
 	}
 
 	return ipAddress, nil
+	*/
+
+	return "127.0.0.1", nil
 }
 
 func (d *Driver) publicSSHKeyPath() string {
@@ -812,6 +829,7 @@ func (d *Driver) diskPath() string {
 	return d.ResolveStorePath("disk.vmdk")
 }
 
+/* greenbox
 func (d *Driver) setupHostOnlyNetwork(machineName string) (*hostOnlyNetwork, error) {
 	hostOnlyCIDR := d.HostOnlyCIDR
 
@@ -940,6 +958,8 @@ func validateNoIPCollisions(hif HostInterfaces, hostOnlyNet *net.IPNet, currHost
 	}
 	return nil
 }
+
+*/
 
 // Select an available port, trying the specified
 // port first, falling back on an OS selected port.
