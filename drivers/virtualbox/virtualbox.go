@@ -544,6 +544,11 @@ func (d *Driver) Start() error {
 			return err
 		}
 
+		_, err = setPortForwarding(d, 1, "docker", "tcp", 2376, 2376)
+		if err != nil {
+			return err
+		}
+
 		if err := d.vbm("startvm", d.MachineName, "--type", d.UIType); err != nil {
 			if lines, readErr := d.readVBoxLog(); readErr == nil && len(lines) > 0 {
 				return fmt.Errorf("Unable to start the VM: %s\nDetails: %s", err, lines[len(lines)-1])
