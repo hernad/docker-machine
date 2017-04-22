@@ -27,7 +27,7 @@ type defaultDiskCreator struct{}
 
 // Make a boot2docker VM disk image.
 func (c *defaultDiskCreator) Create(size int, publicSSHKeyPath, diskPath string) error {
-	log.Debugf("Creating %d MB hard disk image...", size)
+	log.Debugf("Creating %d MB hard disk image %s ...", size, diskPath)
 
 	tarBuf, err := mcnutils.MakeDiskImage(publicSSHKeyPath)
 	if err != nil {
@@ -73,7 +73,7 @@ func createDiskImage(dest string, size int, r io.Reader) error {
 		return err
 	}
 
-	log.Debug("Filling zeroes")
+	log.Info("Filling zeroes bytes %d", sizeBytes - n)
 
 	// The total number of bytes written to stdin must match sizeBytes, or
 	// VBoxManage.exe on Windows will fail. Fill remaining with zeros.

@@ -200,7 +200,7 @@ func (d *Driver) GetCreateFlags() []mcnflag.Flag {
 }
 
 func (d *Driver) GetSSHHostname() (string, error) {
-	return "127.0.0.1", nil
+	return d.GetIP()
 }
 
 func (d *Driver) GetSSHUsername() string {
@@ -237,6 +237,10 @@ func (d *Driver) SetConfigFromFlags(flags drivers.DriverOptions) error {
 	d.Boot2DockerURL = flags.String("virtualbox-boot2docker-url")
 	d.SetSwarmConfigFromFlags(flags)
 	d.SSHUser = "docker"
+	d.SSHPort = flags.Int("virtualbox-ssh-port")
+	if d.SSHPort == 0 {
+		d.SSHPort = 2222 // default greenbox host ssh port
+	}
 	d.Boot2DockerImportVM = flags.String("virtualbox-import-boot2docker-vm")
 	d.HostDNSResolver = flags.Bool("virtualbox-host-dns-resolver")
 	d.NatNicType = flags.String("virtualbox-nat-nictype")
@@ -462,7 +466,7 @@ func (d *Driver) CreateVM() error {
 	}
 
 	if shareDir != "" && !d.NoShare {
-		log.Debugf("setting up shareDir '%s' -> '%s'", shareDir, shareName)
+		log.Infof("setting up shareDir '%s' -> '%s'", shareDir, shareName)
 		if _, err := os.Stat(shareDir); err != nil && !os.IsNotExist(err) {
 			return err
 		} else if !os.IsNotExist(err) {
@@ -529,7 +533,6 @@ func (d *Driver) Start() error {
 
 	switch s {
 	case state.Stopped, state.Saved:
-		d.SSHPort = 2222 // default greenbox host ssh port
 		d.SSHPort, err = setPortForwarding(d, 1, "ssh", "tcp", 22, d.SSHPort)
 		if err != nil {
 			return err
@@ -801,7 +804,6 @@ func (d *Driver) GetIP() (string, error) {
 	}
 
 	log.Debugf("Host-only MAC: %s\n", macAddress)
-
 
 	output, err := drivers.RunSSHCommandFromDriver(d, "ip addr show")
 	if err != nil {
