@@ -30,4 +30,4 @@ if [[ "$@" == *"clean"* ]] && [[ -d bin ]]; then
   rm -Rf bin
 fi
 
-docker cp $DOCKER_CONTAINER_NAME:/go/src/github.com/hernad/machine/bin .
+docker cp $DOCKER_CONTAINER_NAME:/go/src/github.com/hernad/docker-machine/bin .
