@@ -627,6 +627,7 @@ func (d *Driver) Start() error {
 		return fmt.Errorf("Unable to start the VM: %s", err)
 	}
 
+  return nil
 /*
 	log.Infof("Waiting for an IP...")
 	return d.ipWaiter.Wait(d)
