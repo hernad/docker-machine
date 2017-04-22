@@ -73,7 +73,7 @@ func createDiskImage(dest string, size int, r io.Reader) error {
 		return err
 	}
 
-	log.Info("Filling zeroes bytes %d", sizeBytes - n)
+	log.Info("Filling zeroes bytes ", sizeBytes - n)
 
 	// The total number of bytes written to stdin must match sizeBytes, or
 	// VBoxManage.exe on Windows will fail. Fill remaining with zeros.
