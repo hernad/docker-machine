@@ -14,6 +14,9 @@ arch.386 := i386
 
 define gocross
 	$(if $(findstring [$(1)/$(2)],$(VALID_OS_ARCH)), \
+	@echo "== docker-machine greenbox patch ==="
+	GOOS=$(1) GOARCH=$(2) CGO_ENABLED=0 \
+		$(GO) get -d github.com/docker/machine github.com/codegangsta/cli 
 	GOOS=$(1) GOARCH=$(2) CGO_ENABLED=0 \
 		$(GO) build \
 		-o $(PREFIX)/bin/docker-machine-${os.$(1)}-${arch.$(2)}$(call extension,$(GOOS)) \

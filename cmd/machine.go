@@ -28,7 +28,7 @@ import (
 	"github.com/docker/machine/libmachine/drivers/plugin"
 	"github.com/docker/machine/libmachine/drivers/plugin/localbinary"
 	"github.com/docker/machine/libmachine/log"
-	"github.com/docker/machine/version"
+	"github.com/hernad/docker-machine/version"
 )
 
 var AppHelpTemplate = `Usage: {{.Name}} {{if .Flags}}[OPTIONS] {{end}}COMMAND [arg...]
@@ -97,7 +97,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = filepath.Base(os.Args[0])
 	app.Author = "Docker Machine Contributors"
-	app.Email = "https://github.com/docker/machine"
+	app.Email = "https://github.com/hernad/docker-machine"
 
 	app.Commands = commands.Commands
 	app.CommandNotFound = cmdNotFound
