@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/docker/machine/commands/mcndirs"
+	"github.com/hernad/docker-machine/commands/mcndirs"
 	"github.com/docker/machine/libmachine"
 	"github.com/docker/machine/libmachine/check"
 	"github.com/docker/machine/libmachine/log"

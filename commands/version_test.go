@@ -6,7 +6,7 @@ import (
 
 	"bytes"
 
-	"github.com/docker/machine/commands/commandstest"
+	"github.com/hernad/docker-machine/commands/commandstest"
 	"github.com/docker/machine/libmachine/host"
 	"github.com/docker/machine/libmachine/libmachinetest"
 	"github.com/docker/machine/libmachine/mcndockerclient"

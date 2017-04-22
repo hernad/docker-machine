@@ -3,7 +3,7 @@ package commands
 import (
 	"testing"
 
-	"github.com/docker/machine/commands/commandstest"
+	"github.com/hernad/docker-machine/commands/commandstest"
 	"github.com/docker/machine/drivers/fakedriver"
 	"github.com/docker/machine/libmachine"
 	"github.com/docker/machine/libmachine/auth"

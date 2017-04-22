@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/docker/machine/commands/mcndirs"
+	"github.com/hernad/docker-machine/commands/mcndirs"
 	"github.com/docker/machine/libmachine/auth"
 	"github.com/docker/machine/libmachine/drivers"
 	"github.com/docker/machine/libmachine/engine"

@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/codegangsta/cli"
-	"github.com/docker/machine/commands/mcndirs"
+	"github.com/hernad/docker-machine/commands/mcndirs"
 	"github.com/docker/machine/libmachine"
 	"github.com/docker/machine/libmachine/crashreport"
 	"github.com/docker/machine/libmachine/host"

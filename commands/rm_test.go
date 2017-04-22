@@ -5,7 +5,7 @@ import (
 
 	"errors"
 
-	"github.com/docker/machine/commands/commandstest"
+	"github.com/hernad/docker-machine/commands/commandstest"
 	"github.com/docker/machine/drivers/fakedriver"
 	"github.com/docker/machine/libmachine/host"
 	"github.com/docker/machine/libmachine/libmachinetest"
