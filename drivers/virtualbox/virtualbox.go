@@ -621,11 +621,11 @@ func (d *Driver) Start() error {
 	// We have to be sure the adapter is updated before starting the VM
 	d.sleeper.Sleep(5 * time.Second)
 
-*/
-
 	if err := d.vbm("startvm", d.MachineName, "--type", d.UIType); err != nil {
 		return fmt.Errorf("Unable to start the VM: %s", err)
 	}
+
+	*/
 
   return nil
 /*
