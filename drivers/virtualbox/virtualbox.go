@@ -196,6 +196,12 @@ func (d *Driver) GetCreateFlags() []mcnflag.Flag {
 			Name:   "virtualbox-share-folder",
 			Usage:  "Mount the specified directory instead of the default home location. Format: dir:name",
 		},
+		mcnflag.IntFlag{
+			EnvVar: "VIRTUALBOX_SSH_PORT",
+			Name:   "virtualbox-ssh-port",
+			Usage:  "Virtualbox host ssh port, default 2222",
+		},
+
 	}
 }
 
