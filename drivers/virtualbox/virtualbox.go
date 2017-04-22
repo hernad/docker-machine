@@ -571,12 +571,11 @@ func (d *Driver) Start() error {
 		}
 	}
 
+	/* greenbox hostOnlyAdapter out
 	log.Infof("Waiting for an IP...")
 	if err := d.ipWaiter.Wait(d); err != nil {
 		return err
 	}
-
-/* greenbox hostOnlyAdapter out
 
 	greenbox if hostOnlyAdapter == nil {
 		return nil
@@ -628,8 +627,10 @@ func (d *Driver) Start() error {
 		return fmt.Errorf("Unable to start the VM: %s", err)
 	}
 
+/*
 	log.Infof("Waiting for an IP...")
 	return d.ipWaiter.Wait(d)
+*/
 }
 
 func (d *Driver) Stop() error {
