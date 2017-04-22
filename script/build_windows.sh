@@ -2,7 +2,8 @@
 
 export USE_CONTAINER=true
 
-GO=go
+GO=/usr/local/go/bin/go
+GOROOT=/usr/local/go
 GOPATH="/go"
 
 #TARGET_OS=windows TARGET_ARCH="amd64 386" make build-x
