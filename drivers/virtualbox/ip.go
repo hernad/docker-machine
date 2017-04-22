@@ -19,6 +19,9 @@ func NewIPWaiter() IPWaiter {
 type sshIPWaiter struct{}
 
 func (w *sshIPWaiter) Wait(d *Driver) error {
+
+	/* greenbox IP - nothing to Wait - 127.0.0.1 is our IP Address
+
 	// Wait for SSH over NAT to be available before returning to user
 	if err := drivers.WaitForSSH(d); err != nil {
 		return err
@@ -29,6 +32,7 @@ func (w *sshIPWaiter) Wait(d *Driver) error {
 		return err
 	}
 
+  */
 	var err error
 	d.IPAddress, err = d.GetIP()
 
